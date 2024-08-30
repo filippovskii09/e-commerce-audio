@@ -1,6 +1,7 @@
 import { DM_Sans } from "next/font/google";
-import "./globals.css";
 import { ReduxProvider } from "@/providers/ReduxProvider";
+import "../globals.css";
+import Header from "@/components/header/Header";
 
 const dm_sans = DM_Sans({
 	subsets: ["latin"],
@@ -17,7 +18,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={dm_sans.className}>
 				<ReduxProvider>
-					{children}
+					<div className="w-full h-full">
+						<Header/>
+						{children}
+					</div>
 				</ReduxProvider>
 			</body>
     </html>

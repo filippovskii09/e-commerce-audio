@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const AuthLayout = ({ children }) => {
   return (
-    <div className="auth-wrapper w-full h-screen pt-24 object-center relative px-6">
+    <div className="auth-wrapper w-full h-screen object-center relative px-6">
       <Image
         alt="auth-image"
         src="/auth/main.png"

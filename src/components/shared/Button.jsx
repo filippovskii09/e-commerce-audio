@@ -1,4 +1,3 @@
-'use client';
 const Button = ({ text, type, loading }) => {
 	const buttonType = type ? type : "button";
 
