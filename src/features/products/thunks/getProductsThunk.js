@@ -5,10 +5,8 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 export const getAllProducts = createAsyncThunk(
 	"products/getAllProducts",
 	async (category, {rejectWithValue}) => {
-		const collectionRef = collection(db, 'products');
-		const q = query(collectionRef, where("category", "==", category));
 		try {
-			const response = await getDocs(q);
+			const response = await getDocs(query(collection(db, 'products'), where("category", "==", category)));
 			const products = response.docs.map((doc) => {
 			  const data = doc.data();
 			  return {

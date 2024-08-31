@@ -16,6 +16,8 @@ const Products = () => {
 
 	if(isLoading) return <div className='text-2xl font-semibold'>Loading...</div>
 
+	if(products.lenght) return <div className='text-2xl font-semibold'>No one items...</div>
+
 	return (
 		<div>
 			<div className='flex gap-4 flex-wrap justify-between pb-5'>

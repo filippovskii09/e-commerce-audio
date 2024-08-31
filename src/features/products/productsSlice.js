@@ -1,4 +1,5 @@
 import { getProductDetail } from "./thunks/getProductDetailThunk";
+import { getProductsByName } from "./thunks/getProductsByName";
 import { getAllProducts } from "./thunks/getProductsThunk";
 
 const { createSlice } = require("@reduxjs/toolkit")
@@ -8,7 +9,7 @@ const initialState = {
 	detailProduct: null,
 	isLoading: false,
 	error: null
-}
+};
 
 const productsSlice = createSlice({
 	name: "products",
@@ -37,6 +38,17 @@ const productsSlice = createSlice({
 			.addCase(getProductDetail.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
+			})
+			.addCase(getProductsByName.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(getProductsByName.fulfilled, (state, action) => {
+				state.products = action.payload
+				state.isLoading = false;
+			})
+			.addCase(getProductsByName.rejected, (state, action) => {
+				state.products = action.payload;
+				state.isLoading = false;
 			});
 	}
 })
