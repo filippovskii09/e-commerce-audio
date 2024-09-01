@@ -24,6 +24,7 @@ const Header = () => {
 	const handleLogout = () => {
 		router.push("/signin");
 		dispatch(logoutUser());
+		setIsOpenMenu(false);
 	}
 
 	return (
