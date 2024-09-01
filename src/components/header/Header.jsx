@@ -10,6 +10,7 @@ import { menuVariants } from "@/animations/animationVariants";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "@/features/auth/thunks/logoutUserThunk";
+import Link from "next/link";
 
 const Header = () => {
 	const { searchActive, setSearchActive, searchInput, setSearchInput } = useContext(SearchContext);
@@ -47,7 +48,10 @@ const Header = () => {
 				</div>
 				<ul className="flex flex-col">
 					<li>
-						<button className="w-full h-full text-left py-4 px-6 border-t border-b" onClick={handleLogout}>Logout</button>
+						<Link href="/cart" className="w-full h-full text-left py-4 px-6 border-t block">Cart</Link>
+					</li>
+					<li>
+						<button className="w-full h-full text-left py-4 px-6 border-t" onClick={handleLogout}>Logout</button>
 					</li>
 				</ul>
 			</motion.div>

@@ -80,7 +80,7 @@ export const products = [
     category: "Bluetooth Speakers",
   },
 	{
-    id: 8,
+    id: 9,
     name: "Marshall KILBURN II (чорний та латунь)",
     price: 14890,
     image:

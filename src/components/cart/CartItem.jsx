@@ -27,8 +27,8 @@ const CartItem = ({ cartItem }) => {
 	        </p>
 				</div>
 				<div className="flex justify-between gap-2">
-					<CartCounter/>
-					<DeleteCartItem id={cartItem.id}/>
+					<CartCounter quantity={cartItem.quantity} id={cartItem.id}/>
+					<DeleteCartItem id={cartItem.id} />
 				</div>
 			</div>
 		</motion.div>

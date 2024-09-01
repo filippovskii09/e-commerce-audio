@@ -1,12 +1,29 @@
 "use client";
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import CartList from "./CartList"
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { RightIcon } from "@/icons/RightIcon";
+import { useEffect, useState } from "react";
+import { calculateTotal } from "@/features/cart/cartSlice";
 
 const Cart = () => {
 	const { cartTotal, cart} = useSelector((state) => state.cart);
-	
+	const dispatch = useDispatch();
+	const controls = useAnimation();
+
+	useEffect(() => {
+    dispatch(calculateTotal());
+  }, [cart, dispatch]);
+
+  useEffect(() => {
+    controls.start({
+      scale: [1, 1.2, 1],
+      color: ["#000000", "#0ACF83", "#000000"],
+      y: [-10, 0],
+      transition: { duration: 0.6 },
+    });
+  }, [cartTotal, controls]);
+
 	return (
 		<div className="px-5 pb-40">
 			<CartList/>
@@ -21,11 +38,11 @@ const Cart = () => {
 					className="flex items-center justify-between"
 				>
 					<p>Total {cart.length} Items</p>
-					<p className="font-bold">{cartTotal.toLocaleString("uk-UA", {
+					<motion.p className="font-bold" animate={controls}>{cartTotal.toLocaleString("uk-UA", {
 	            style: "currency",
 	            currency: "UAH",
 	          })}
-					</p>
+					</motion.p>
 				</div>
 				<button className="text-white rounded-xl bg-[#0ACF83] py-4 px-8 flex items-center justify-between"><span>Proceed to Checkout</span><RightIcon/></button>
 			</motion.div>

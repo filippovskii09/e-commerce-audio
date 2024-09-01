@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Product from './Product';
 import Link from 'next/link';
+import { uploadProducts } from '@/utils/uploadProducts';
 
 const FeaturedProducts = () => {
 	const { isLoading, products } = useSelector(state => state.products);
