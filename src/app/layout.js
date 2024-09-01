@@ -11,7 +11,7 @@ const dm_sans = DM_Sans({
 export const metadata = {
   title: "audio-e-commerce",
   description: "e-commerce",
-	viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+	viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
 };
 
 export default function RootLayout({ children }) {
