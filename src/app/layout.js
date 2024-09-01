@@ -1,7 +1,8 @@
 import { DM_Sans } from "next/font/google";
 import { ReduxProvider } from "@/providers/ReduxProvider";
-import "./globals.css";
 import SearchProvider from "@/providers/SearchProvider";
+import "./globals.css";
+import MenuProvider from "@/providers/MenuProvider";
 
 const dm_sans = DM_Sans({
 	subsets: ["latin"],
@@ -20,9 +21,11 @@ export default function RootLayout({ children }) {
       <body className={dm_sans.className}>
 				<ReduxProvider>
 					<SearchProvider>
-						<div className="w-full h-full">
-							{children}
-						</div>
+						<MenuProvider>
+							<div className="w-full h-full">
+								{children}
+							</div>
+						</MenuProvider>
 					</SearchProvider>
 				</ReduxProvider>
 			</body>

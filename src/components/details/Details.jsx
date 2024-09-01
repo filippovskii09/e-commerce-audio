@@ -6,7 +6,6 @@ const Details = () => {
 	const params = useParams();
 	const { product, loading, error } = useProduct(params.productId);
 	if(loading) return <div className='text-2xl font-semibold'>Loading...</div>
-	console.log(product);
 	
 	return (
 		<div>
