@@ -9,14 +9,14 @@ const Products = () => {
 	const { isLoading, products } = useSelector(state => state.products);
 	const filterCategory = useSelector((state) => state.filters.filterCategory);
 	const dispatch = useDispatch();
-
+	
 	useEffect(() => {
 		dispatch(getAllProducts(filterCategory));
 	}, [])
 
 	if(isLoading) return <div className='text-2xl font-semibold'>Loading...</div>
 
-	if(products.lenght) return <div className='text-2xl font-semibold'>No one items...</div>
+	if(products.lenght === 0) return <div className='text-2xl font-semibold'>No one items...</div>
 
 	return (
 		<div>
