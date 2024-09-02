@@ -5,8 +5,10 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import ProductsFilters from "./ProductsFilters";
 import ProductsFiltersButton from "./ProductsFiltersButton";
+import useAuth from "@/hooks/useAuth";
 
 const ProductsComponent = () => {
+	useAuth();
   const filterCategory = useSelector((state) => state.filters.filterCategory);
   const [filtersIsOpen, setFiltersIsOpen] = useState(false);
 

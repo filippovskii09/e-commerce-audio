@@ -3,9 +3,10 @@ import { motion } from "framer-motion"
 import SearchField from "../search/SearchField";
 import HomeGreatingSection from "./HomeGreatingSection";
 import HomeContentSection from "./HomeContentSection";
+import useAuth from "@/hooks/useAuth";
 
 const HomeComponent = () => {
-
+	useAuth();
 	return (
 		<motion.div 
 			className="flex flex-col mt-7 h-full transition-all"

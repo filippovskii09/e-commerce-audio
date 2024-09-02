@@ -2,8 +2,10 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { itemVariants, listVariants } from "@/animations/animationVariants";
+import useAuth from "@/hooks/useAuth";
 
 const OrdersComponent = () => {
+	useAuth();
   const user = useSelector((state) => state.auth.user);
 
   if (user.orders.length === 0)
