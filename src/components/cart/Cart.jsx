@@ -10,7 +10,6 @@ import CartSubmit from "./CartSubmit";
 import useAuth from "@/hooks/useAuth";
 
 const Cart = () => {
-	useAuth();
 	const { cartTotal, cart} = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
