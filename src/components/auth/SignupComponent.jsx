@@ -5,7 +5,7 @@ import Button from "../shared/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "@/features/auth/thunks/registerUserThunk";
 import Link from "next/link";
-import { GoogleIcon } from "@/icons/GoogleIcon";
+// import { GoogleIcon } from "@/icons/GoogleIcon";
 import { useRouter } from "next/navigation";
 
 const SignupComponent = () => {
@@ -33,7 +33,7 @@ const SignupComponent = () => {
 					<Button type="submit" text="Sign Up" loading={loading}/>
 				</div>
 			</form>
-			<button className="flex items-center justify-center bg-white rounded-lg h-14 w-14 mt-10 mx-auto short:mt-2"><GoogleIcon/></button>
+			{/* <button className="flex items-center justify-center bg-white rounded-lg h-14 w-14 mt-10 mx-auto short:mt-2"><GoogleIcon/></button> */}
 			<p className="text-sm text-white text-center mt-6">If you have an account? <Link href="/signin" className="underline font-semibold text-[#0ACF83]">Sign In here</Link></p>
 		</>
 	)

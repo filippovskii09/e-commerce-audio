@@ -13,8 +13,8 @@ export const registerUser = createAsyncThunk(
         uid: firebaseUser.uid,
         email: firebaseUser.email,
         createdAt: new Date().toISOString(),
-				role: "user", // Роль користувача (наприклад, customer, admin)
-				orders: [], // Масив замовлень, пов'язаних з користувачем
+				role: "user",
+				orders: [],
 			};
 			
 			await setDoc(doc(db, "users", firebaseUser.uid), user);
