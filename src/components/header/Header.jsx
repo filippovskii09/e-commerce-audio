@@ -1,62 +1,40 @@
 "use client";
 import { LeftArrow } from "@/icons/LeftArrow";
-import { LogoIcon } from "@/icons/LogoIcon"
-import { MenuIcon } from "@/icons/MenuIcon"
-import { MenuContext } from "@/providers/MenuProvider";
+import { LogoIcon } from "@/icons/LogoIcon";
+import { MenuIcon } from "@/icons/MenuIcon";
 import { SearchContext } from "@/providers/SearchProvider";
-import { useContext } from "react";
-import { motion } from 'framer-motion';
-import { menuVariants } from "@/animations/animationVariants";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { logoutUser } from "@/features/auth/thunks/logoutUserThunk";
-import Link from "next/link";
+import { useContext, useState } from "react";
+import HeaderMenu from "./HeaderMenu";
 
 const Header = () => {
-	const { searchActive, setSearchActive, searchInput, setSearchInput } = useContext(SearchContext);
-	const { isOpenMenu, setIsOpenMenu } = useContext(MenuContext);
-	const router = useRouter();
-	const dispatch = useDispatch();
-	const resetSearch = () => {
-		setSearchInput("");
-		setSearchActive(false)
-	}
+  const { searchActive, setSearchActive, searchInput, setSearchInput } =
+    useContext(SearchContext);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-	const handleLogout = () => {
-		router.push("/signin");
-		dispatch(logoutUser());
-		setIsOpenMenu(false);
-	}
+  const resetSearch = () => {
+    setSearchInput("");
+    setSearchActive(false);
+  };
 
-	return (
-		<>
-			<header>
-				<div className="px-5 flex items-center justify-between py-3">
-					{searchActive || searchInput ? <button onClick={resetSearch}><LeftArrow/></button> : <button onClick={() => setIsOpenMenu(!isOpenMenu)}><MenuIcon/></button>}
-					<LogoIcon/>
-				</div>
-			</header>
-			<motion.div
-				className="fixed pt-3 w-full h-full z-40 left-0 top-0 flex flex-col justify-between bg-white"
-				variants={menuVariants}
-				initial="initial"
-				animate={isOpenMenu ? "active" : "initial"}
-				exit="initial"
-			>
-				<div className="px-5">
-					<button onClick={() => setIsOpenMenu(false)}><LeftArrow/></button>
-				</div>
-				<ul className="flex flex-col">
-					<li>
-						<Link href="/cart" className="w-full h-full text-left py-4 px-6 border-t block">Cart</Link>
-					</li>
-					<li>
-						<button className="w-full h-full text-left py-4 px-6 border-t" onClick={handleLogout}>Logout</button>
-					</li>
-				</ul>
-			</motion.div>
-		</>
-	)
-}
+  return (
+    <>
+      <header>
+        <div className="px-5 flex items-center justify-between py-3">
+          {searchActive || searchInput ? (
+            <button onClick={resetSearch}>
+              <LeftArrow />
+            </button>
+          ) : (
+            <button onClick={() => setIsOpenMenu(!isOpenMenu)}>
+              <MenuIcon />
+            </button>
+          )}
+          <LogoIcon />
+        </div>
+      </header>
+      <HeaderMenu isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
+    </>
+  );
+};
 
-export default Header
+export default Header;

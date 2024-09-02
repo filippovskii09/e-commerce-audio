@@ -1,15 +1,11 @@
 "use client";
 import Image from "next/image"
-import CartCounter from "./CartCounter"
+import CartItemCounter from "./CartItemCounter"
 import DeleteCartItem from "./DeleteCartItem"
 import { motion } from "framer-motion";
+import { itemVariants } from "@/animations/animationVariants";
 
 const CartItem = ({ cartItem }) => {
-
-	const itemVariants = {
-		hidden: { opacity: 0, y: 20 },
-		visible: { opacity: 1, y: 0 },
-	};
 
 	return (
 		<motion.div className="flex gap-4" variants={itemVariants}>
@@ -27,7 +23,7 @@ const CartItem = ({ cartItem }) => {
 	        </p>
 				</div>
 				<div className="flex justify-between gap-2">
-					<CartCounter quantity={cartItem.quantity} id={cartItem.id}/>
+					<CartItemCounter quantity={cartItem.quantity} id={cartItem.id}/>
 					<DeleteCartItem id={cartItem.id} />
 				</div>
 			</div>

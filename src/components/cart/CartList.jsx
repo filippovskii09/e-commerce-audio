@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux'
 import CartItem from './CartItem';
 import { motion } from "framer-motion";
-import { cartListVariants } from '@/animations/animationVariants';
+import { listVariants } from '@/animations/animationVariants';
 
 const CartList = () => {
 	const cart = useSelector(state => state.cart.cart);
@@ -15,7 +15,7 @@ const CartList = () => {
 			initial="hidden"
 			animate="visible"
 			exit={{ opacity: 0 }}
-			variants={cartListVariants}
+			variants={listVariants}
 			className="flex flex-col gap-9 mt-8"
 		>
 			{cart.map(cartItem => (

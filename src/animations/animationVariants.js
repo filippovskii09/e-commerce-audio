@@ -9,15 +9,20 @@ export const inputVariants = {
 };
 
 export const menuVariants = {
-	initial: { scale: 0, y: -330, x: -180 },
-	active: { scale: 1, y: 0, x: 0, transition: { duration: 0.2 } },
+	initial: { scale: 0, y: -330, x: -180, rotate: -180, transition: { duration: 0.2 } },
+	active: { scale: 1, y: 0, x: 0, rotate: 0, transition: { duration: 0.4 } },
 };
 
-export const cartListVariants = {
+export const listVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.3, // Час між анімацією кожного CartItem
+      staggerChildren: 0.3,
     },
   },
+};
+
+export const itemVariants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: { opacity: 1, y: 0 },
 };

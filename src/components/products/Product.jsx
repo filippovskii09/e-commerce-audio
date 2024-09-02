@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import { itemVariants } from "@/animations/animationVariants";
 
 const Product = ({ product }) => {
 	const dispatch = useDispatch();
@@ -15,10 +17,10 @@ const Product = ({ product }) => {
 	};
 
 	return (
-    <div className="flex flex-col gap-5 p-4 bg-white rounded-2xl w-[calc(50%-1rem)]">
+    <motion.div className="flex flex-col gap-5 p-4 bg-white rounded-2xl w-[calc(50%-1rem)]" variants={itemVariants}>
 			<Link href={`/${product.id}`}>
 	      <div className="flex items-center justify-center w-[125px] h-[125px] mx-auto relative">
-	        <Image src={product.image} alt={product.name} fill />
+	        <Image src={product.image} alt={product.name} fill priority={false} sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%"/>
 	      </div>
 			</Link>
       <div className="flex flex-col gap-1">
@@ -31,7 +33,7 @@ const Product = ({ product }) => {
         </p>
 				<button className="p-1 rounded-xl text-white font-semibold bg-[#0ACF83] text-xs mt-2" onClick={handleAddToCart}>{addedToCart ? "Added to cart" : "Add to cart"}</button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

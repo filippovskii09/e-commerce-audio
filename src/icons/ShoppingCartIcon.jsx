@@ -5,7 +5,7 @@ export const ShoppingCartIcon = () => (
     viewBox="0 0 24 25"
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_652_601)">
+    <g clipPath="url(#clip0_652_601)">
       <path
         d="M9 22.5C9.55228 22.5 10 22.0523 10 21.5C10 20.9477 9.55228 20.5 9 20.5C8.44772 20.5 8 20.9477 8 21.5C8 22.0523 8.44772 22.5 9 22.5Z"
         stroke="black"

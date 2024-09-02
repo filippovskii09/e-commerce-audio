@@ -1,18 +1,19 @@
 "use client";
-import { getAllProducts } from '@/features/products/thunks/getProductsThunk';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Product from './Product';
 import Link from 'next/link';
-import { uploadProducts } from '@/utils/uploadProducts';
+import { listVariants } from '@/animations/animationVariants';
+import { motion } from "framer-motion";
+import useGetAllProducts from '@/hooks/useGetAllProducts';
 
 const FeaturedProducts = () => {
 	const { isLoading, products } = useSelector(state => state.products);
 	const filterCategory = useSelector((state) => state.filters.filterCategory);
-	const dispatch = useDispatch();
+	const handleGetAllProducts = useGetAllProducts();
 	
 	useEffect(() => {
-		dispatch(getAllProducts(filterCategory));
+		handleGetAllProducts(filterCategory);
 	}, [])
 
 	if(isLoading) return <div className='text-2xl font-semibold'>Loading...</div>
@@ -25,12 +26,17 @@ const FeaturedProducts = () => {
 				<h5>Featured Products</h5>
 				<Link href="/products" className='text-sm text-[#7F7F7F]'>See All</Link>
 			</div>
-			<div className='flex gap-4 flex-wrap justify-between pb-5'>
+			<motion.div 
+				className='flex gap-4 flex-wrap justify-between pb-5'
+				initial="hidden"
+				animate="visible"
+				exit={{ opacity: 0 }}
+				variants={listVariants}
+			>
 				{!isLoading && products && products.slice(0, 2).map(product => (
 					<Product key={product.id} product={product}/>
 				))}
-			</div>
-			{/* <button onClick={uploadProducts}>Upload products to db</button> */}
+			</motion.div>
 		</div>
 	)
 }
