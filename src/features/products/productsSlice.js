@@ -1,4 +1,3 @@
-import { getProductDetail } from "./thunks/getProductDetailThunk";
 import { getProductsByName } from "./thunks/getProductsByName";
 import { getAllProducts } from "./thunks/getProductsThunk";
 
@@ -25,17 +24,6 @@ const productsSlice = createSlice({
 				state.products = action.payload;
 			})
 			.addCase(getAllProducts.rejected, (state, action) => {
-				state.isLoading = false;
-				state.error = action.payload;
-			})
-			.addCase(getProductDetail.pending, (state) => {
-				state.isLoading = true;
-			})
-			.addCase(getProductDetail.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.detailProduct = action.payload;
-			})
-			.addCase(getProductDetail.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			})
