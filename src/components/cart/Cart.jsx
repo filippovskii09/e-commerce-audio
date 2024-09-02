@@ -6,6 +6,7 @@ import { RightIcon } from "@/icons/RightIcon";
 import { useEffect } from "react";
 import { calculateTotal } from "@/features/cart/cartSlice";
 import CartTotal from "./CartTotal";
+import CartSubmit from "./CartSubmit";
 
 const Cart = () => {
 	const { cartTotal, cart} = useSelector((state) => state.cart);
@@ -31,7 +32,7 @@ const Cart = () => {
 					<p>Total {cart.length} Items</p>
 					<CartTotal cartTotal={cartTotal}/>
 				</div>
-				<button className="text-white rounded-xl bg-[#0ACF83] py-4 px-8 flex items-center justify-between"><span>Proceed to Checkout</span><RightIcon/></button>
+				<CartSubmit/>
 			</motion.div>
 		</div>
 	)

@@ -4,6 +4,13 @@ import Logout from "../auth/Logout";
 const HeaderMenuLinks = ({ setIsOpenMenu }) => {
   return (
     <ul className="flex flex-col">
+			<li>
+        <Link
+          href="/orders"
+          className="w-full h-full text-left py-4 px-6 border-t block">
+          Orders
+        </Link>
+      </li>
       <li>
         <Link
           href="/cart"

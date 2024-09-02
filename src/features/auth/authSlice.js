@@ -4,6 +4,7 @@ import { loginUser } from "./thunks/loginUserThunk";
 import { logoutUser } from "./thunks/logoutUserThunk";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from 'redux-persist';
+import { postOrderThunk } from "./thunks/postOrderThunk";
 
 const initialState = {
 	user: null,
@@ -45,6 +46,17 @@ const authSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state) => {
 				state.loading = false;
         state.user = null;
+      })
+			.addCase(postOrderThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(postOrderThunk.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user.orders.push(action.payload);
+      })
+      .addCase(postOrderThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
