@@ -32,7 +32,7 @@ const ProductsFilters = ({ setFiltersIsOpen }) => {
           <Input type="text" placeholder="Max Price" />
         </div>
       </div>
-      <button className="text-white rounded-xl bg-[#0ACF83] py-4 w-full">
+      <button className="text-white rounded-xl bg-[#0ACF83] py-4 w-full" onClick={() => {setFiltersIsOpen(false)}}>
         Apply Filter
       </button>
     </motion.div>

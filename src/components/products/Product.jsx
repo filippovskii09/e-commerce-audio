@@ -20,7 +20,7 @@ const Product = ({ product }) => {
 
   return (
     <motion.div
-      className="flex flex-col p-4 gap-3 bg-white rounded-2xl w-[calc(50%-1rem)] justify-between"
+      className="flex flex-col p-4 gap-3 bg-white rounded-2xl w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] justify-between"
       variants={itemVariants}>
       <div className="flex flex-col gap-5">
         <div className="flex items-center justify-center w-[125px] h-[125px] mx-auto relative">
@@ -38,7 +38,7 @@ const Product = ({ product }) => {
         </div>
       </div>
       <button
-        className="p-1 rounded-xl text-white font-semibold bg-[#0ACF83] text-xs mt-2"
+        className="p-1 rounded-xl text-white font-semibold bg-[#0ACF83] text-xs mt-2 hover:-translate-y-1 transition-all ease-linear"
         onClick={handleAddToCart}>
         {addedToCart ? "Added to cart" : "Add to cart"}
       </button>

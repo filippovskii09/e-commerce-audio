@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <body className={dm_sans.className}>
 				<ReduxProvider>
 					<SearchProvider>
-						<div className="w-full h-full">
+						<div className="w-full h-full max-w-[1440px] mx-auto">
 							{children}
 						</div>
 					</SearchProvider>

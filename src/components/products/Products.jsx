@@ -18,10 +18,10 @@ const Products = () => {
 	if(isLoading) return <div className='text-2xl font-semibold'>Loading...</div>
 
 	if(products.lenght === 0) return <div className='text-2xl font-semibold'>No one items...</div>
-	
+
 	return (
 		<motion.div 
-			className='flex gap-4 flex-wrap justify-between pb-5'
+			className='flex gap-4 flex-wrap justify-between pb-5 lg:justify-start'
 			initial="hidden"
 			animate="visible"
 			exit={{ opacity: 0 }}
