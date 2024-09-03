@@ -1,14 +1,24 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { itemVariants, listVariants } from "@/animations/animationVariants";
-import useAuth from "@/hooks/useAuth";
+import { useEffect } from "react";
+import { subscribeToOrders } from "@/features/auth/thunks/subscribeToOrders";
 
 const OrdersComponent = () => {
   const user = useSelector((state) => state.auth.user);
+	const dispatch = useDispatch();
 
   if (user.orders.length === 0)
     return <div className="text-xl font-semibold px-5">No one order yet</div>;
+
+	useEffect(() => {
+		if (user) dispatch(subscribeToOrders());
+	
+		return () => {
+			if (dispatch?.extra?.unsubscribe) dispatch.extra.unsubscribe();
+		};
+	}, [user, dispatch]);
 
   return (
     <motion.div
@@ -16,7 +26,7 @@ const OrdersComponent = () => {
       animate="visible"
       exit={{ opacity: 0 }}
       variants={listVariants}
-      className="flex flex-col gap-9 mt-8 px-5">
+      className="flex flex-col gap-9 mt-8 px-5 pb-8">
       {user.orders.map((order) => (
         <motion.div
           className="flex flex-col gap-2.5 text-xs border p-4 rounded-xl shadow-xl"
